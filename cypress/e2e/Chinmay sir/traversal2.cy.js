@@ -2,7 +2,7 @@
 /// <reference types="Cypress" />
 
 describe('traversal methods in cypress', function () {
-    it('To get children of DOM elements, use the .children() command.', function () {
+    it.only('To get children of DOM elements, use the .children() command.', function () {
         cy.visit('https://www.webdriveruniversity.com/Data-Table/index.html')
         cy.get('.traversal-drinks-list').children().should('have.length', 5)
         cy.get('.traversal-drinks-list').children().each(function (el) {

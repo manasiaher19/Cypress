@@ -1,17 +1,14 @@
-
 [
-    {
-        "firstName": "sai",
-        "lastName": "jadhav",
-        "email": "sjadhav10@gmail.com",
-        "message": "I am learning js"
-      },
-
-      {
-        "firstname": "Nikhil",
-        "lastname": "Aher",
-        "email": "nkaher199@email.com",
-        "message": "I am learning JS"
-      }
-
+  {
+    "firstName": "sai",
+    "lastName": "vani",
+    "email": "saivani010@gmail.com",
+    "message": "I am learning js"
+  },
+  {
+    "firstName": "manasi",
+    "lastName": "aher",
+    "email": "maher010@gmail.com",
+    "message": "I am learning python"
+  }
 ]
