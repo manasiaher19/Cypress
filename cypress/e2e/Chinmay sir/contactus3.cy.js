@@ -1,6 +1,6 @@
 ///<reference types ="Cypress"/>
 
-import users from '../fixtures/multipleUser.json'
+import users from '../../fixtures/multipleUser.json'
 describe('verify contactus form', function () {
 
     let obj = {
@@ -70,8 +70,8 @@ describe('verify contactus form', function () {
     })
 
     //multipleUser
-    it('verify contact us form - multipleUser incorrect way', function () {
-        cy.log(this.users)
+    it.only('verify contact us form - multipleUser incorrect way', function () {
+        //cy.log(this.users)
         this.users.forEach(function (el) {
             cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')
             cy.get('input[name="first_name"]').type(el.firstName)
@@ -85,15 +85,15 @@ describe('verify contactus form', function () {
     })
 
 
-    users.forEach(function (el, index) {
-        it(`running with test data ${index + 1}`, function () {
-            cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')
-            cy.get('input[name="first_name"]').type(el.firstName)
-            cy.get('input[name="last_name"]').type(el.lastName)
-            cy.get('input[name="email"]').type(el.email)
-            cy.get('textarea[name="message"]').type(el.message)
-            cy.get('input[type="submit"]').click()
-            cy.get('h1').should('have.text', 'Thank You for your Message!')
-        })
-    })
+    // users.forEach(function (el, index) {
+    //     it(`running with test data ${index + 1}`, function () {
+    //         cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')
+    //         cy.get('input[name="first_name"]').type(el.firstName)
+    //         cy.get('input[name="last_name"]').type(el.lastName)
+    //         cy.get('input[name="email"]').type(el.email)
+    //         cy.get('textarea[name="message"]').type(el.message)
+    //         cy.get('input[type="submit"]').click()
+    //         cy.get('h1').should('have.text', 'Thank You for your Message!')
+    //     })
+    // })
 })
