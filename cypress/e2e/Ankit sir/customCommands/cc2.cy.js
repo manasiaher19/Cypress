@@ -9,7 +9,7 @@ describe('custome command 2', () => {
         cy.get('h1').should('be.visible')
     })
 
-    it.only('positive scenario for contact us form', () => {
+    it.only('second positive scenario for contact us form', () => {
         cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
         cy.contactUsFillData('Omi', 'Singh', 'om13@email.com', 'For test Perpose')
         cy.get('[type="submit"]').click()

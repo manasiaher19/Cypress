@@ -29,6 +29,7 @@ describe('Verify contact us form (with fixture)', () => {
 
     })
 
+
     //fixture file= txtData.json
     it('Reading data from fixture for single it block', () => {
         cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
@@ -42,7 +43,9 @@ describe('Verify contact us form (with fixture)', () => {
         })
     })
 
-    //fixture file = multipleUser2.json
+
+
+    //fixture file = multipleUser2.json (fixture in before each block)
     it('read data for multiple users from fixture file', () => {
         Users.forEach((el) => {
             cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
@@ -55,20 +58,38 @@ describe('Verify contact us form (with fixture)', () => {
         });
     })
 
-    // //reading multiple user index wise
-    // Users.forEach((el, index) => {
-    //     it(`running with test data ${index + 1}`, () => {
-    //         cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
-    //         cy.get('[name="first_name"]').type(el.firstName)
-    //         cy.get('[name="last_name"]').type(el.lastName)
-    //         cy.get('[name="email"]').type(el.email)
-    //         cy.get('[name="message"]').type(el.comments)
-    //         cy.get('[value="SUBMIT"]').click()
-    //         cy.get('h1').should('have.text', 'Thank You for your Message!')
-    //     })
-    // })
 
+    //******reading multiple user index wise *******//
+    Users.forEach((el, index) => {
+        it(`running with test data ${index + 1}`, () => {
+            cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
+            cy.get('[name="first_name"]').type(el.firstName)
+            cy.get('[name="last_name"]').type(el.lastName)
+            cy.get('[name="email"]').type(el.email)
+            cy.get('[name="message"]').type(el.comments)
+            cy.get('[value="SUBMIT"]').click()
+            cy.get('h1').should('have.text', 'Thank You for your Message!')
+        })
+    })
+
+    //------------------------------------------------------------------------------------
+    //without before each block ==>
+    it.only('read data for multiple users from fixture file', () => {
+        cy.fixture('multipleUser2').then((user) => {
+            user.forEach((el) => {
+                cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
+                cy.get('[name="first_name"]').type(el.firstName)
+                cy.get('[name="last_name"]').type(el.lastName)
+                cy.get('[name="email"]').type(el.email)
+                cy.get('[name="message"]').type(el.comments)
+                cy.get('[value="SUBMIT"]').click()
+                cy.get('h1').should('have.text', 'Thank You for your Message!')
+            })
+        })
+    })
+    //----------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
+
 
     //custom command(cc2.cy.js) + feature file
     it('custom command + feature file', () => {
@@ -80,8 +101,9 @@ describe('Verify contact us form (with fixture)', () => {
         })
     })
 
+
     //customCpmmand(cc2.cy.js) + fixture file(multipleUser2.json)
-    it.only('custom command + multiple user', () => {
+    it('custom command + multiple user', () => {
         Users.forEach((el) => {
             cy.visit('https://www.webdriveruniversity.com/Contact-Us/contactus.html')
             cy.contactUsFillData(el.firstName, el.lastName, el.email, el.comments)

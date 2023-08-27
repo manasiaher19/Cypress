@@ -46,6 +46,7 @@
     "core-util-is": "^1.0.2",
     "cross-spawn": "^7.0.3",
     "cypress": "^12.11.0",
+    "cypress-real-events": "^1.10.0",
     "cypress-xpath": "^2.0.1",
     "dashdash": "^1.14.1",
     "dayjs": "^1.11.7",
